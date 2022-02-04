@@ -10,14 +10,18 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:typescriptgenuml.helloWorld"
+        "typescriptgenuml.genuml"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "typescriptgenuml.helloWorld",
-				"title": "Hello World"
+				"command": "typescriptgenuml.genuml",
+				"title": "gen uml"
+			},
+			{
+				"command": "typescriptgenuml.helloWorld1",
+				"title": "Hello World 1"
 			}
 		]
 	},
