@@ -10,7 +10,7 @@
 		"Other"
 	],
 	"activationEvents": [
-        "typescriptgenuml.genuml"
+        "onCommand:typescriptgenuml.genuml"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
