@@ -1,3 +1,4 @@
+import * as path from 'path';
 import * as vscode from 'vscode';
 import { getWebviewContent } from './webView';
 
@@ -19,12 +20,14 @@ export function activate(context: vscode.ExtensionContext) {
 			vscode.ViewColumn.Two,
 			{
 				enableScripts: true,
+				retainContextWhenHidden: true,
+				localResourceRoots: [vscode.Uri.file(path.join(context.extensionPath, 'out', 'app'))],
 			}
 		);
 
 		const cat = 'Compiling Cat';
 		panel.title = cat;
-		panel.webview.html = getWebviewContent(cat);
+		panel.webview.html = getWebviewContent(panel, context);
 	}
 
 	disposable = vscode.commands.registerCommand('typescriptgenuml.genuml', genumlCommand);

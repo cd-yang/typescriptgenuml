@@ -1,19 +1,25 @@
+import * as path from 'path';
+import * as vscode from 'vscode';
 
-const cats = {
-    'Coding Cat': 'https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif',
-    'Compiling Cat': 'https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif'
-};
+export function getWebviewContent(panel: vscode.WebviewPanel, context: vscode.ExtensionContext) {
+    const bundleScriptPath = panel.webview.asWebviewUri(
+        vscode.Uri.file(path.join(context.extensionPath, 'out', 'app', 'bundle.js'))
+    );
 
-export function getWebviewContent(cat: keyof typeof cats) {
-    return `<!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Cat Coding</title>
-  </head>
-  <body>
-      <img src="${cats[cat]}" width="300" />
-  </body>
-  </html>`;
+    return `
+        <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>React App</title>
+          </head>
+      
+          <body>
+            <div id="root"></div>
+            <div>here body</div>
+            <script src="${bundleScriptPath}"></script>
+          </body>
+        </html>
+      `;
 }
