@@ -11,7 +11,14 @@
             "dom",
             "ES2015"
         ],
-        "strict": true
+        "strict": true,
+        "types": [
+            "typed-mxgraph"
+        ],
+        "typeRoots": [
+            "../node_modules/@types",
+            "../node_modules/@typed-mxgraph"
+        ]
     },
     "exclude": [
         "node_modules"

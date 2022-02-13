@@ -2,11 +2,11 @@ import * as path from 'path';
 import * as vscode from 'vscode';
 
 export function getWebviewContent(panel: vscode.WebviewPanel, context: vscode.ExtensionContext) {
-    const bundleScriptPath = panel.webview.asWebviewUri(
-        vscode.Uri.file(path.join(context.extensionPath, 'out', 'app', 'bundle.js'))
-    );
+  const bundleScriptPath = panel.webview.asWebviewUri(
+    vscode.Uri.file(path.join(context.extensionPath, 'out', 'app', 'bundle.js'))
+  );
 
-    return `
+  return `
         <!DOCTYPE html>
           <html lang="en">
           <head>
@@ -17,7 +17,7 @@ export function getWebviewContent(panel: vscode.WebviewPanel, context: vscode.Ex
       
           <body>
             <div id="root"></div>
-            <div>here body</div>
+            <div id="graph"></div>
             <script src="${bundleScriptPath}"></script>
           </body>
         </html>
